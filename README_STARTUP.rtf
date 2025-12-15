@@ -1,0 +1,218 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2867
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\froman\fcharset0 Times-Bold;\f1\froman\fcharset0 Times-Roman;\f2\fmodern\fcharset0 Courier;
+}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}}{\leveltext\leveltemplateid1\'01\'00;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat2\levelspace360\levelindent0{\*\levelmarker \{decimal\}}{\leveltext\leveltemplateid101\'01\'00;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid2}
+{\list\listtemplateid3\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat3\levelspace360\levelindent0{\*\levelmarker \{decimal\}}{\leveltext\leveltemplateid201\'01\'00;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid3}
+{\list\listtemplateid4\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat4\levelspace360\levelindent0{\*\levelmarker \{decimal\}}{\leveltext\leveltemplateid301\'01\'00;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid4}
+{\list\listtemplateid5\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid401\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid5}
+{\list\listtemplateid6\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}}{\leveltext\leveltemplateid501\'01\'00;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{circle\}}{\leveltext\leveltemplateid502\'01\uc0\u9702 ;}{\levelnumbers;}\fi-360\li1440\lin1440 }{\listname ;}\listid6}
+{\list\listtemplateid7\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}}{\leveltext\leveltemplateid601\'01\'00;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid7}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}{\listoverride\listid4\listoverridecount0\ls4}{\listoverride\listid5\listoverridecount0\ls5}{\listoverride\listid6\listoverridecount0\ls6}{\listoverride\listid7\listoverridecount0\ls7}}
+\margl1440\margr1440\vieww17580\viewh11600\viewkind0
+\deftab720
+\pard\pardeftab720\sa298\partightenfactor0
+\ls1\ilvl0
+\f0\b\fs36 \cf0 \expnd0\expndtw0\kerning0
+{\listtext	1	}1. How to run the program
+\fs24 \kerning1\expnd0\expndtw0 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa240\partightenfactor0
+\ls1\ilvl0\cf0 {\listtext	2	}     0. \expnd0\expndtw0\kerning0
+Set keys / install deps
+\f1\b0 \
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs26 \cf0   export OPENAI_API_KEY="sk-..."   # your key\
+  pip install openai datasets unsloth "transformers>=4.44.0" trl accelerate bitsandbytes\
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa240\partightenfactor0
+\ls2\ilvl0
+\f0\b\fs24 \cf0 \kerning1\expnd0\expndtw0 {\listtext	2	}    1. \expnd0\expndtw0\kerning0
+Generate multi-turn dataset
+\f1\b0 \
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs26 \cf0   python academic_qa_multitune.py --phase generate\
+  # -> creates synthetic_qa.jsonl\
+\pard\tx720\pardeftab720\sa240\partightenfactor0
+
+\f0\b\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa240\partightenfactor0
+\ls3\ilvl0\cf0 {\listtext	3	}    2. \expnd0\expndtw0\kerning0
+Fine-tune LLaMA with QLoRA\
+\pard\pardeftab720\partightenfactor0
+\ls3\ilvl0
+\f2\b0\fs26 \cf0 \kerning1\expnd0\expndtw0 {\listtext	4	}  \expnd0\expndtw0\kerning0
+python academic_qa_multitune.py --phase finetune\
+{\listtext	5	}  # -> saves adapters & tokenizer in ./llama3-academic-qa-qlora\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa240\partightenfactor0
+\ls3\ilvl0\cf0 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa240\partightenfactor0
+\ls4\ilvl0
+\f0\b\fs24 \cf0 \kerning1\expnd0\expndtw0 {\listtext	4	}    3.  \expnd0\expndtw0\kerning0
+Evaluate base vs fine-tuned
+\f1\b0 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa240\partightenfactor0
+\ls5\ilvl0\cf0 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Optional: create your own test questions file (
+\f2\fs26 test_qs.txt
+\f1\fs24 ) with 1 question per line, making sure they 
+\f0\b weren\'92t copied
+\f1\b0  from the training data.
+\f2\fs26 \
+\pard\pardeftab720\partightenfactor0
+\cf0      python academic_qa_multitune.py --phase evaluate --test_questions_file test_qs.txt\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs24 \cf0 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa240\partightenfactor0
+\cf0 \kerning1\expnd0\expndtw0    \'95	or just
+\f2\fs26 \expnd0\expndtw0\kerning0
+\
+     python academic_qa_finetune.py --phase evaluate\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\fs24 \cf0     and it\'92ll use the built-in 10 generic academic questions.\
+\
+\pard\pardeftab720\sa298\partightenfactor0
+
+\f0\b\fs36 \cf0 \outl0\strokewidth0 \strokec2 2. Simple evaluation rubric (pre vs post)\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\b0\fs24 \cf0 \
+For each question & model:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa240\partightenfactor0
+\ls6\ilvl0
+\f0\b \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	1	}    A.     \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Faithfulness to the paper (0\'962)
+\f1\b0 \
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\sa240\partightenfactor0
+\ls6\ilvl1\cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 0: Clear hallucinations or contradicts abstract.\
+\ls6\ilvl1\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 1: Partially correct but includes some unsupported details.\
+\ls6\ilvl1\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 2: Fully consistent with the abstract; no obvious hallucinations.\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa240\partightenfactor0
+\ls6\ilvl0
+\f0\b \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	2	}    B.      \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Factual completeness (0\'962)
+\f1\b0 \
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\sa240\partightenfactor0
+\ls6\ilvl1\cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 0: Misses key points.\
+\ls6\ilvl1\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 1: Covers some but not all important aspects.\
+\ls6\ilvl1\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 2: Covers the main ideas, conditions, and nuances.\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa240\partightenfactor0
+\ls6\ilvl0
+\f0\b \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	3	}    C.     \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Specificity & technical precision (0\'962)
+\f1\b0 \
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\sa240\partightenfactor0
+\ls6\ilvl1\cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 0: Very vague or generic.\
+\ls6\ilvl1\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 1: Some technical terms but superficial.\
+\ls6\ilvl1\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 2: Uses relevant terminology, definitions, and structure from the abstract.\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa240\partightenfactor0
+\ls6\ilvl0
+\f0\b \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	4	}   D.      \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Handling of unanswerable / edge questions (0\'962)
+\f1\b0 \
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\sa240\partightenfactor0
+\ls6\ilvl1\cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 0: Hallucinates a precise answer where none is given.\
+\ls6\ilvl1\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 1: Hints that the info may be missing but still speculates.\
+\ls6\ilvl1\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 2: Explicitly says \'93the abstract does not specify X\'94 and avoids guessing.\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa240\partightenfactor0
+\ls6\ilvl0
+\f0\b \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	5	}   E.      \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Clarity & academic style (0\'962)
+\f1\b0 \
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\sa240\partightenfactor0
+\ls6\ilvl1\cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 0: Confusing / informal.\
+\ls6\ilvl1\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 1: Understandable but sloppy or poorly structured.\
+\ls6\ilvl1\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 2: Clear, concise, academic tone.\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 \strokec2     Compute a 
+\f0\b total score (0\'9610)
+\f1\b0  for each answer, and compare mean scores across your 10 test questions:\
+             Q#   |    Model     | Faith | Compl | Spec | Unans | Style | Total\
+            \'97\'97+\'97\'97\'97\'97\'97+\'97\'97\'97+\'97\'97\'97+\'97\'97\'97+\'97\'97\'97+\'97\'97\'97+\'97\'97\'97\
+               1    | Base            |      1      |      1     |      1      |      0     |      1      |     4\
+                     | Fine-tuned  |      2       |     2     |       2      |     2     |      2       |    10\
+              ...\
+\
+\pard\pardeftab720\sa298\partightenfactor0
+
+\f0\b\fs36 \cf0 3. Export fine-tuned model \uc0\u8594  GGUF / Ollama\
+\pard\pardeftab720\sa280\partightenfactor0
+
+\fs28 \cf0 \strokec2    3.1 Merge LoRA adapters into base weights\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\b0\fs24 \cf0 \strokec2           Unsloth\'92s QLoRA training leaves you with 
+\f0\b base model + LoRA adapters
+\f1\b0 . To convert to GGUF or serve via Ollama easily, it\'92s best to:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa240\partightenfactor0
+\ls7\ilvl0\cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	1	}          1. \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Load the base model in full precision (or bfloat16/fp16).\
+\ls7\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	2	}          2. \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Load the LoRA adapters.\
+\ls7\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	3	}          3. \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Merge them into a single Hugging Face model.\
+{\listtext	4	}         4. Then convert that merged HF model to GGUF / use it directly with Ollama.\
+\pard\tx720\pardeftab720\sa240\partightenfactor0
+\cf0 \strokec2         So, to get a directory: 
+\f2\fs26 llama3.1-8b-academic-qa-merged/
+\f1\fs24  which is a standard HF model folder, run the following  program:\
+             python merge_and_export.py \
+\
+\pard\pardeftab720\sa280\partightenfactor0
+
+\f0\b\fs28 \cf0 \strokec2     3.2 Convert merged HF \uc0\u8594  GGUF (llama.cpp style)\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\b0\fs24 \cf0 \strokec2            Assuming you\'92ve cloned 
+\f2\fs26 \strokec2 llama.cpp
+\f1\fs24 \strokec2 :\
+           cd /path/to/llama.cpp\
+          # Convert Hugging Face model to GGUF\
+          python convert_hf_to_gguf.py \\\
+                 --model /path/to/llama3.1-8b-academic-qa-merged \\\
+                 --outfile llama3.1-8b-academic-qa-f16.gguf\
+          # Quantize down to Q4_K_M (or any quant you like)\
+          ./quantize \\\
+                llama3.1-8b-academic-qa-f16.gguf \\\
+                llama3.1-8b-academic-qa-Q4_K_M.gguf \\\
+                Q4_K_M\
+          Now you can use 
+\f2\fs26 \strokec2 llama3.1-8b-academic-qa-Q4_K_M.gguf
+\f1\fs24 \strokec2  with any GGUF-based runtime.\
+\pard\pardeftab720\partightenfactor0
+\cf0 \strokec2 \
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 \strokec2 \
+\
+\pard\tx720\pardeftab720\sa240\partightenfactor0
+\cf0 \strokec2 \
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 \strokec2 \
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 \
+\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs26 \cf0 \strokec2 \
+\
+}
